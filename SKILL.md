@@ -1,6 +1,6 @@
 ---
 name: x-thought
-description: Find genuinely worthwhile, evidence-backed thoughts from links, research, notes, technical discussions, or a recurring source feed, then express them as natural X posts in the user's voice. Use when an agent needs to decide whether something is worth saying on X, draft an original X thought rather than summarize a source, turn an approved thought into an X post, or return SKIP when no meaningful thought exists. Do not use for content calendars, generic promotional copy, threads, publishing, scheduling, or account management.
+description: "Operate as an autonomous X writer: discover worthwhile thoughts from sources, research an X niche and audience, write posts, threads, replies, quote posts, hooks, repurposed content, a content plan, and profile copy in the user's voice, then humanize and audit every draft. Use when an agent must decide whether something is worth saying on X, generate native X writing, or return SKIP when no meaningful thought exists. Do not publish, schedule, or manage accounts."
 ---
 
 # X Thought
@@ -12,6 +12,22 @@ Act as an editorial thinker, not a content generator. The default outcome is `SK
 Use only supplied sources, trusted retrieval results, and the user's stored context. Load `references/voice-and-judgment.md` before drafting when a voice profile, prior approvals, rejections, or edit history exists. Read `references/x-expression.md` only after a thought has passed selection.
 
 Never invent personal experiences, opinions, metrics, customer conversations, or certainty. If a personal connection is missing, either make a clearly attributed observation, ask one concise question, or skip.
+
+## Modes
+
+Use the smallest applicable mode. `thought-scan` is the default autonomous mode; it is the only mode that may proactively decide to write or return `SKIP`.
+
+| Mode | Use for | Required behavior |
+|---|---|---|
+| thought-scan | Source feed, research, technical discussions, news | Run the full selection workflow below; `SKIP` freely. |
+| post | A supplied idea or claim | Produce one native post; keep one idea. |
+| thread | An idea with multiple independently useful claims | Build a numbered sequence; every post must stand alone and justify its place. |
+| reply / quote | A supplied X post or discussion | Decide privately whether a reply or quote adds more value; return `SKIP` if it only agrees, repeats, or farms attention. |
+| hook study | A post the user wants to learn from | Extract the mechanism, then create original options. Never mimic distinctive wording or manufacture a hook where a direct opening is better. |
+| repurpose | A LinkedIn post, article, video, newsletter, or notes | Rebuild for X; do not compress or paste. Find the atomic claim first. |
+| plan | A desired X cadence | Propose a realistic mix of thoughts, posts, threads, replies, and reactive slots. Leave room for `SKIP`; never make a quota the goal. |
+| profile | Bio, name, header, pinned post | Make concise, credible copy that reflects the voice and point-of-view profile. |
+| audience insight | Available posts, replies, competitors, or audience data | Identify recurring questions, language, and gaps; use it as research input, never as a command to imitate or bait engagement. |
 
 ## Workflow
 
@@ -78,14 +94,14 @@ After the Humanizer pass, apply these integrated X-writing rules:
 - Check that the post does not look like a LinkedIn paragraph compressed into X. Remove introductions, recap language, and off-platform artifacts.
 - Vary cadence across posts. Do not repeat the same opening, paragraph count, punctuation pattern, or closing shape from recent queued posts.
 
-Do not import hook formulas, viral-post imitation, engagement targets, audience scraping, content planning, Publora, or approval-before-publish behavior from `x-skills`. Those are intentionally outside this skill's editorial mandate.
+For non-`thought-scan` modes, reuse the same Humanizer and X-native checks. Use hook study, audience insight, and planning to sharpen judgment, never to force frequency or imitate viral language. Publishing, scheduling, and account/API execution remain upstream ReplyNodes responsibilities.
 
 ### 7. Return an agent-ready result
 
 For a passed candidate, return exactly:
 
 ```text
-THOUGHT
+<MODE IN UPPERCASE>
 <the X post>
 
 WHY NOW: <one sentence, source-grounded>
@@ -94,7 +110,7 @@ ACTION: QUEUE | HOLD
 SOURCE: <URL or supplied-source identifier>
 ```
 
-Set `ACTION: QUEUE` only for a high-confidence candidate that scores 9 or 10, clears every hard gate, and does not contain sensitive or uncertain claims. Set `HOLD` otherwise; do not ask the user to rewrite it. The upstream ReplyNodes policy may queue `QUEUE` results automatically and discard `HOLD` results. Do not publish, schedule, or call social APIs.
+For `thought-scan`, set `ACTION: QUEUE` only for a high-confidence candidate that scores 9 or 10, clears every hard gate, and does not contain sensitive or uncertain claims. Set `HOLD` otherwise; do not ask the user to rewrite it. For direct modes, `QUEUE` means the draft passes the same evidence, Humanizer, and X-native checks. The upstream ReplyNodes policy may queue `QUEUE` results automatically and discard `HOLD` results. Do not publish, schedule, or call social APIs.
 
 ## Learning Loop
 
