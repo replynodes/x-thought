@@ -13,6 +13,26 @@ Use only supplied sources, trusted retrieval results, and the user's stored cont
 
 Never invent personal experiences, opinions, metrics, customer conversations, or certainty. If a personal connection is missing, either make a clearly attributed observation, ask one concise question, or skip.
 
+## Integrated source skills (mandatory)
+
+This skill includes complete, unmodified runtime copies of `blader/humanizer` and `sergebulaev/x-skills` under `components/`, with their MIT licenses. Do not treat them as optional inspiration.
+
+For every run:
+
+1. Load `components/humanizer/SKILL.md` and run its complete rewrite plus final audit after drafting.
+2. Load `components/x-skills/SKILL.md` and the complete matching mode skill below before writing:
+   - post: `components/x-skills/skills/x-post-writer/SKILL.md`
+   - thread: `components/x-skills/skills/x-thread-builder/SKILL.md`
+   - reply / quote: `components/x-skills/skills/x-reply-drafter/SKILL.md`
+   - hook study: `components/x-skills/skills/x-hook-extractor/SKILL.md`
+   - repurpose: `components/x-skills/skills/x-repurposer/SKILL.md`
+   - plan: `components/x-skills/skills/x-content-planner/SKILL.md`
+   - profile: `components/x-skills/skills/x-profile-optimizer/SKILL.md`
+   - audience insight: `components/x-skills/skills/x-audience-insights/SKILL.md`
+3. For `thought-scan`, use `x-post-writer` unless the selected thought genuinely needs a thread; then apply the thought-selection gate in this root skill before writing.
+
+Apply all writing, voice, hook, format, audit, research, and planning instructions from the integrated components. Override only their publish, schedule, credential, API-client, and explicit user-approval instructions: return the agent-ready `QUEUE`, `HOLD`, or `SKIP` result from this root skill instead. ReplyNodes owns execution.
+
 ## Modes
 
 Use the smallest applicable mode. `thought-scan` is the default autonomous mode; it is the only mode that may proactively decide to write or return `SKIP`.
