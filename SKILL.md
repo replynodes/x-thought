@@ -45,7 +45,26 @@ Write one post only. Preserve the claim and evidence; do not add a hook template
 
 The post must sound like a person noticing or arguing something, have one clear idea and concrete grounding, avoid overclaiming, avoid engagement bait and manufactured vulnerability, avoid recent post shapes and phrasing, and fit the user's actual tone.
 
-### 5. Return an agent-ready result
+### 5. Humanize, audit, and rewrite (mandatory)
+
+Run the following integrated Humanizer pass on every candidate that passed selection. This is a mandatory second draft, not an optional reference or a cosmetic cleanup.
+
+1. Rewrite toward the user's calibrated voice: sentence rhythm, word choice, punctuation, roughness, and quirks take precedence over generic "clean" prose.
+2. Preserve the thought, perspective, facts, names, numbers, dates, links, and certainty level. Never fabricate specificity to make the post feel human.
+3. Audit the rewrite for every applicable pattern below. Remove or rewrite a pattern unless it is demonstrably part of the user's authentic voice and serves the claim.
+4. Run the audit once more on the rewritten text. If a meaningful AI tell remains, rewrite again or return `HOLD`.
+
+**Remove unsupported content:** significance inflation; notability/name-dropping; superficial "-ing" analysis; promotional description; vague attributions; formulaic adversity-and-triumph framing.
+
+**Use direct language:** inflated AI vocabulary; evasive verbs such as "serves as" or "boasts"; "not X, but Y" and tailing negations; forced rule-of-three; synonym cycling; false ranges; subjectless fragments when an actor adds clarity.
+
+**Remove model-shaped style:** em/en dashes; decorative formatting; title-like headings; emoji used as scaffolding; over-hyphenated word pairs; persuasive-authority framing; signposts such as "let's dive in"; diff-anchored prose; manufactured punchlines/staccato drama; aphorism formulas; fake-candid rhetorical openers.
+
+**Remove chatbot behavior:** canned closers; cutoff disclaimers; sycophancy; filler; stacked hedges; generic conclusions.
+
+Do not blindly ban short sentences, fragments, dashes, or emojis when they genuinely match the user's established voice. The purpose is to remove generic model defaults, not sand away personality.
+
+### 6. Return an agent-ready result
 
 For a passed candidate, return exactly:
 
