@@ -64,7 +64,23 @@ Run the following integrated Humanizer pass on every candidate that passed selec
 
 Do not blindly ban short sentences, fragments, dashes, or emojis when they genuinely match the user's established voice. The purpose is to remove generic model defaults, not sand away personality.
 
-### 6. Return an agent-ready result
+### 6. Make it native to X (mandatory)
+
+After the Humanizer pass, apply these integrated X-writing rules:
+
+- Keep one independently useful idea in the post. Split genuinely separate claims; do not force a thread.
+- Make the first line carry the claim or observation. X has no LinkedIn-style `see more` fold.
+- Prefer tight over long. Target a standard 280-character post unless extra context is essential; measure the actual character count before `QUEUE`. Account for emoji as two characters.
+- Keep names of people, companies, and products correctly capitalized. Lowercase sentence starts may be used only if they match the user's voice.
+- Prefer specific, verifiable numbers to vague adjectives. Preserve uncertainty when a number is unavailable.
+- Use no hashtag and no emoji by default. Permit at most one of each only when it genuinely fits the user's established voice or the meaning.
+- Do not put a link in the post merely to perform credibility or growth. Add it only if the source is necessary for the claim; an upstream publisher may place it elsewhere according to its own distribution policy.
+- Check that the post does not look like a LinkedIn paragraph compressed into X. Remove introductions, recap language, and off-platform artifacts.
+- Vary cadence across posts. Do not repeat the same opening, paragraph count, punctuation pattern, or closing shape from recent queued posts.
+
+Do not import hook formulas, viral-post imitation, engagement targets, audience scraping, content planning, Publora, or approval-before-publish behavior from `x-skills`. Those are intentionally outside this skill's editorial mandate.
+
+### 7. Return an agent-ready result
 
 For a passed candidate, return exactly:
 
