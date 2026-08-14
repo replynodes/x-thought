@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Thought"
+  short_description: "Find and express worthwhile thoughts for X."
+  default_prompt: "Use my source notes and voice profile to find one X thought worth sharing, or return SKIP."
