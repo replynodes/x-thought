@@ -1,6 +1,6 @@
-# x-thought
+# x-thought (independent legacy skill)
 
-An autonomous X writer for Hermes Agent and ReplyNodes.
+An autonomous X writing skill for Hermes Agent. It is not the current ReplyNodes MCP, does not publish or schedule content, and is retained separately from ReplyNodes' canonical agent context surface.
 
 It does not generate content to fill a calendar. It reads sources, decides whether there is a real thought worth expressing, and returns `SKIP` when there is not.
 
